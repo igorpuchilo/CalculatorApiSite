@@ -19,7 +19,7 @@ namespace Calculator.Controllers
         {
             if ((a.HasValue) && (b.HasValue))
             {
-                //update
+                //update new
                 SomeBL objsum = new SomeBL();
                 return Ok(objsum.Summ(a.Value, b.Value));
             }
