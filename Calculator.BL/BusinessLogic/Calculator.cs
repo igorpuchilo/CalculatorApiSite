@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Calculator.BL
+namespace Calculator.BL.BusinessLogic
 {
-    public class SomeBL
+    public class Calculator : ICalculator
     {
-        public int Summ(int a, int b)
+
+        public int Add(int a, int b)
             {
-            int c = a + b;
-            return c;
+            return a+b;
             }
     }
 }

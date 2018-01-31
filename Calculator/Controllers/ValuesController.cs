@@ -4,29 +4,25 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Calculator.BL;
+using Calculator.BL.BusinessLogic;
 namespace Calculator.Controllers
 {
     public class ValuesController : ApiController
     {
+        private readonly ICalculator _caclulator;
+        public ValuesController(ICalculator calculator)
+        {
+            _caclulator = calculator;
+        }
         // GET api/values
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        public IHttpActionResult Get(int? a, int? b)
+        public int Get(int a, int b)
         {
-            if ((a.HasValue) && (b.HasValue))
-            {
-                //update new
-                SomeBL objsum = new SomeBL();
-                return Ok(objsum.Summ(a.Value, b.Value));
-            }
-            else
-            {
-                return BadRequest();
-            }
+            return _caclulator.Add(a, b);
         }
 
         // POST api/values
