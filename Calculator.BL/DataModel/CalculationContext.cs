@@ -11,7 +11,6 @@ namespace Calculator
         public CalculationContext()
            : base("DbConnection")
         { }
-
         public DbSet<Calculation> Calculation { get; set; }
     }
 }
