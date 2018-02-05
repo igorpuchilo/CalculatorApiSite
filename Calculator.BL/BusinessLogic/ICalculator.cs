@@ -9,7 +9,7 @@ namespace Calculator.BL.BusinessLogic
     public interface ICalculator
     {
         Calculation Add(int num1, int num2);
-        List<Calculation> ListAll();
+        Calculation[] ListAll();
         void Delete(int Id);
     }
 }

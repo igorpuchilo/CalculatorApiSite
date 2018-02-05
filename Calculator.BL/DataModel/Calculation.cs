@@ -10,6 +10,6 @@ namespace Calculator
         public int Id { get; set; }
         public string Expression { get; set; }
         public int Result { get; set; }
-        public String CreatedOn { get; set; }
+        public string CreatedOn { get; set; }
     }
 }

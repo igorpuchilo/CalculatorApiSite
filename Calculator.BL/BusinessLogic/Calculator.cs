@@ -13,8 +13,6 @@ namespace Calculator.BL.BusinessLogic
             using (CalculationContext db = new CalculationContext())
             {
                 int c = a + b;
-                int d = a - b;
-                int e = a * b;
                 DateTime myDateTime = DateTime.Now;
                 string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 Calculation calc = new Calculation { Expression = "Add", Result = c, CreatedOn = sqlFormattedDate };
@@ -24,10 +22,12 @@ namespace Calculator.BL.BusinessLogic
 
             }
         }
-        public List<Calculation> ListAll()
+        public Calculation[] ListAll()
         {
-            CalculationContext db = new CalculationContext();
-            return db.Calculation.ToList();
+            using (CalculationContext db = new CalculationContext())
+            {
+                return db.Calculation.ToArray();
+            }
         }
         public void Delete(int Id)
         {

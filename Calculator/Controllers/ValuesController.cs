@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Net.Http; 
 using System.Web.Http;
 using Calculator.BL.BusinessLogic;
 namespace Calculator.Controllers
@@ -19,17 +19,14 @@ namespace Calculator.Controllers
         {
             return new string[] { "value1", "value2" };
         }
-        public Calculation Get(int a, int b)
+        public IHttpActionResult Get(int a, int b)
         {
-            return _caclulator.Add(a,b);
+            return Ok(_caclulator.Add(a,b));
         }
-        public string Get(int Id)
+        public IHttpActionResult Get (string All)
         {
-            return ("Delete by Id = "+ Id + "Ok?!");
-        }
-        public List<Calculation> Get (string All)
-        {
-            return _caclulator.ListAll();
+            var ResultArray = _caclulator.ListAll();
+            return Ok(ResultArray);
         }
         // POST api/values
         public void Post([FromBody]string value)
@@ -42,8 +39,10 @@ namespace Calculator.Controllers
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int Id)
         {
+            _caclulator.Delete(Id);
+            return Ok("Delete by Id = " + Id);
         }
     }
 }
