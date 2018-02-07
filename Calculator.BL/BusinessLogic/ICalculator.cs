@@ -8,8 +8,8 @@ namespace Calculator.BL.BusinessLogic
 {
     public interface ICalculator
     {
-        ResultDto Add(int num1, int num2);
-        ResultDto[] ListAll();
+        CalculationDTO Add(int num1, int num2);
+        CalculationDTO[] ListAll();
         void Delete(int Id);
     }
 }

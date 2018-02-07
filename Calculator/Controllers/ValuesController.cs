@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http; 
 using System.Web.Http;
 using Calculator.BL.BusinessLogic;
+using System.Linq.Expressions;
+using System.Data.Entity;
 namespace Calculator.Controllers
 {
     public class ValuesController : ApiController
@@ -25,7 +27,8 @@ namespace Calculator.Controllers
         }
         public IHttpActionResult Get (string All)
         {
-            var ResultArray = _caclulator.ListAll();
+            Object ResultArray = _caclulator.ListAll();
+            //internal static Expression<Func<Calculation, ResultDto>> SelectExpression = Expandable.Expand();
             return Ok(ResultArray);
         }
         // POST api/values

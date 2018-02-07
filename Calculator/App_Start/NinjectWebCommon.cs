@@ -11,6 +11,7 @@ namespace Calculator.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.WebApi;
     using Calculator.BL.BusinessLogic;
+    using System.Data.Entity;
 
     public static class NinjectWebCommon 
     {
@@ -64,6 +65,7 @@ namespace Calculator.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ICalculator>().To<Calculator>();
+            kernel.Bind<CalculationContext>().To<CalculationContext>();
         }
     }
 }

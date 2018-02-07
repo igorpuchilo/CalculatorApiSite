@@ -51,6 +51,7 @@
     <Compile Include="BusinessLogic\ICalculator.cs" />
     <Compile Include="DataModel\Calculation.cs" />
     <Compile Include="DataModel\CalculationContext.cs" />
+    <Compile Include="BusinessLogic\CalculationDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
