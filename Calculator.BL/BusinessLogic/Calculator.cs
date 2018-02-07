@@ -23,7 +23,7 @@ namespace Calculator.BL.BusinessLogic
             _context2 = DbContext2;
 
             Debug.WriteLine(DbContext1.GetHashCode());
-            Debug.WriteLine(DbContext1.GetHashCode());
+            Debug.WriteLine(DbContext2.GetHashCode());
         }
         public CalculationDTO Add(int a, int b)
         {

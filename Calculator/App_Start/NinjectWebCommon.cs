@@ -65,7 +65,7 @@ namespace Calculator.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ICalculator>().To<Calculator>();
-            kernel.Bind<CalculationContext>().To<CalculationContext>();
+            kernel.Bind<CalculationContext>().To<CalculationContext>().InRequestScope();
         }
     }
 }
