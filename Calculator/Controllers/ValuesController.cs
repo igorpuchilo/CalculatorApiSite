@@ -27,9 +27,7 @@ namespace Calculator.Controllers
         }
         public IHttpActionResult Get (string All)
         {
-            Object ResultArray = _caclulator.ListAll();
-            //internal static Expression<Func<Calculation, ResultDto>> SelectExpression = Expandable.Expand();
-            return Ok(ResultArray);
+            return Ok(_caclulator.ListAll());
         }
         // POST api/values
         public void Post([FromBody]string value)
