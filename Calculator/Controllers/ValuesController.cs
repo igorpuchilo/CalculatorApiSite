@@ -7,14 +7,17 @@ using System.Web.Http;
 using Calculator.BL.BusinessLogic;
 using System.Linq.Expressions;
 using System.Data.Entity;
+using Calculator.Factory;
 namespace Calculator.Controllers
 {
     public class ValuesController : ApiController
     {
+        private readonly CalculationFactory _factory;
         private readonly ICalculator _caclulator;
-        public ValuesController(ICalculator calculator)
+        public ValuesController(ICalculator calculator, CalculationFactory factory)
         {
             _caclulator = calculator;
+            _factory = factory;
         }
         // GET api/values
         public IEnumerable<string> Get()
@@ -23,11 +26,11 @@ namespace Calculator.Controllers
         }
         public IHttpActionResult Get(int a, int b)
         {
-            return Ok(_caclulator.Add(a,b));
+            return Ok(_factory.GetResult(_caclulator.Add(a,b)));
         }
         public IHttpActionResult Get (string All)
         {
-            return Ok(_caclulator.ListAll());
+            return Ok(_factory.GetResult(_caclulator.ListAll()));
         }
         // POST api/values
         public void Post([FromBody]string value)

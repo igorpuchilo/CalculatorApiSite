@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Calculator.Models
 {
-  
-    public class CalculationResultModel
+    public class CalculationResultItemModel
     {
-        public CalculationResultItemModel[] Results { get; set; }
+        public string Expression { get; set; }
+        public int Result { get; set; }
     }
 }

@@ -202,6 +202,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CalculationResultItemModel.cs" />
     <Compile Include="Models\CalculationResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
