@@ -11,18 +11,14 @@ namespace CalculatorTests.Client
 {
     class ApiClient : IDisposable
     {
-        private readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings
-        {
-            NullValueHandling = NullValueHandling.Ignore,
-            DateFormatHandling = DateFormatHandling.IsoDateFormat,
-            TypeNameHandling = TypeNameHandling.All
-        };
+        //private readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+        //{
+        //    NullValueHandling = NullValueHandling.Ignore,
+        //    DateFormatHandling = DateFormatHandling.IsoDateFormat,
+        //    TypeNameHandling = TypeNameHandling.All
+        //};
         public string Raw { get; internal set; }
-        private class HttpClientEx : HttpClient
-        {
-            //Sad smile
-        }
-        private HttpClientEx client = new HttpClientEx
+        private HttpClient client = new HttpClient
         {
             BaseAddress = new Uri ("http://localhost:49881/"),
             Timeout = new TimeSpan(0, 10, 0)
@@ -44,11 +40,11 @@ namespace CalculatorTests.Client
             return await client.GetAsync(url);
         }
 
-        public T Deserialize<T>()
-        {
-            if (string.IsNullOrWhiteSpace(Raw))
-                return default(T);
-            return JsonConvert.DeserializeObject<T>(Raw, this.serializerSettings);
-        }
+        //public T Deserialize<T>()
+        //{
+        //    if (string.IsNullOrWhiteSpace(Raw))
+        //        return default(T);
+        //    return JsonConvert.DeserializeObject<T>(Raw, this.serializerSettings);
+        //}
     }
 }
