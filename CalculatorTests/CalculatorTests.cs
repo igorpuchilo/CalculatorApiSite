@@ -5,6 +5,7 @@ using System.Net.Http;
 using Calculator.Models;
 using CalculatorTests.Client;
 using System.Net;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 namespace CalculatorTests
 {
@@ -12,17 +13,13 @@ namespace CalculatorTests
     public class CalculatorTests
     {
         [TestMethod]
-        public void Sum33_33_66()
+        public async Task Sum33_33_66()
         { 
             CalculationResultItemModel model = new CalculationResultItemModel();
             ApiClient client = new ApiClient();
-            string url = "http://localhost:50993/Api/values?a=33&b=33";
-            HttpResponseMessage response = new HttpResponseMessage();
-            response = client.Get(url);
-            response.Content.ReadAsStringAsync().ContinueWith((readTask) =>
-            {
-                model = (CalculationResultItemModel)JsonConvert.DeserializeObject(readTask.Result);
-            });
+            string url = "/Api/values?a=33&b=33";
+            CalculationResultItemModel response = new CalculationResultItemModel();
+            response = await client.Get_Sum(url);
             Assert.IsNotNull(model);
             Assert.AreEqual(66,model.Result);
         }
