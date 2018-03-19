@@ -14,7 +14,6 @@ namespace CalculatorTests.Client
 {
     public sealed class ApiClient : IDisposable
     {
-        private readonly bool useQueryAccessToken;
         private static string userAgent;
 
         public readonly string Endpoint;
