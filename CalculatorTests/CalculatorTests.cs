@@ -13,15 +13,17 @@ namespace CalculatorTests
     public class CalculatorTests
     {
         [TestMethod]
-        public async Task Sum33_33_66()
-        { 
+        public void Sum33_33_66()
+        {
+            int b = 66;
             CalculationResultItemModel model = new CalculationResultItemModel();
-            ApiClient client = new ApiClient();
-            string url = "/Api/values?a=33&b=33";
-            CalculationResultItemModel response = new CalculationResultItemModel();
-            response = await client.Get_Sum(url);
+            ApiClient client = new ApiClient("http://localhost/Calculator/");
+            ApiRequestMethod requestMethod = ApiRequestMethod.GET;
+            Task<ApiResponse> response = client.MakeApiRequestAsync("/Api/values?a=5&b=8", requestMethod,null);
+            ApiResponse result = response.Result;
+            model = result.Deserialize<CalculationResultItemModel>();
             Assert.IsNotNull(model);
-            Assert.AreEqual(66,model.Result);
+            Assert.AreEqual(b,model.Result);
         }
         public void ListAll()
         {

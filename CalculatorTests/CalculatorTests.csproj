@@ -78,6 +78,9 @@
   <ItemGroup>
     <Compile Include="CalculatorTests.cs" />
     <Compile Include="Client\ApiClient.cs" />
+    <Compile Include="Client\ApiErrorData.cs" />
+    <Compile Include="Client\ApiRequestMethod.cs" />
+    <Compile Include="Client\ApiResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
