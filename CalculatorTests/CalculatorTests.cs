@@ -19,7 +19,7 @@ namespace CalculatorTests
             CalculationResultItemModel model = new CalculationResultItemModel();
             ApiClient client = new ApiClient("http://localhost/Calculator/");
             ApiRequestMethod requestMethod = ApiRequestMethod.GET;
-            Task<ApiResponse> response = client.MakeApiRequestAsync("/Api/values?a=5&b=8", requestMethod,null);
+            Task<ApiResponse> response = client.MakeApiRequestAsync("/Api/values?a=33&b=33", requestMethod,null);
             ApiResponse result = response.Result;
             model = result.Deserialize<CalculationResultItemModel>();
             Assert.IsNotNull(model);

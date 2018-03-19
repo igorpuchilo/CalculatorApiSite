@@ -12,18 +12,11 @@ namespace Calculator.BL.BusinessLogic
     public class Calculator : ICalculator
     {
         private CalculationContext _context;
-        private CalculationContext _context2;
-        //public Calculator(CalculationContext DbContext)
-        //{
-        //    _context = DbContext;
-        //}
-        public Calculator(CalculationContext DbContext1, CalculationContext DbContext2)
+        public Calculator(CalculationContext DbContext)
         {
-            _context = DbContext1;
-            _context2 = DbContext2;
+            _context = DbContext;
 
-            Debug.WriteLine(DbContext1.GetHashCode());
-            Debug.WriteLine(DbContext2.GetHashCode());
+            Debug.WriteLine(DbContext.GetHashCode());
         }
         public CalculationDTO Add(int a, int b)
         {
@@ -34,7 +27,7 @@ namespace Calculator.BL.BusinessLogic
             _context.Calculation.Add(calc);
 
             _context.SaveChanges();
-            return _context.Calculation.Select(CalculationDTO.SelectExpression).OrderBy(x => x.CreatedOn).FirstOrDefault();
+            return _context.Calculation.Select(CalculationDTO.SelectExpression).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
         }
 
         public CalculationDTO[] ListAll()
