@@ -32,11 +32,11 @@ namespace CalculatorTests
         [TestMethod]
         public void Delete()
         {
-            int Id = 1;
+            int Id = 22;
             string resultD = "";
             ApiClient client = new ApiClient("http://localhost/Calculator/");
             ApiRequestMethod requestMethod = ApiRequestMethod.DELETE;
-            Task<ApiResponse> response = client.MakeApiRequestAsync("/Api/values?Id=2", requestMethod, null);
+            Task<ApiResponse> response = client.MakeApiRequestAsync("/Api/values?Id=22", requestMethod, null);
             ApiResponse result = response.Result;
             resultD = result.Deserialize<string>();
             Assert.IsNotNull(resultD);
