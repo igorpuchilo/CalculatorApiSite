@@ -56,38 +56,6 @@ namespace CalculatorTests.Client
 			this.RequestHttpContent = httpContent;
 		}
 
-		public static HttpContent CreateUploadFileContent(string name, string fileName, byte[] content)
-		{
-			var requestContent = new MultipartFormDataContent();
-			var imageContent = new ByteArrayContent(content);
-			imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-
-			requestContent.Add(imageContent, name, fileName);
-
-			return requestContent;
-		}
-
-		internal HttpContent GetContent()
-		{
-			if (this.RequestHttpContent != null)
-				return this.RequestHttpContent;
-
-			return this.RequestContent == null
-				? null
-				: new StringContent(this.RequestContent, Encoding.UTF8, "application/json");
-		}
-
-		internal void SetResponse(HttpResponseMessage responseMessage)
-		{
-			Status = responseMessage.StatusCode;
-			Headers = responseMessage.Headers;
-			if (responseMessage.Content != null)
-			{
-				ContentHeaders = responseMessage.Content.Headers;
-				Raw = responseMessage.Content.ReadAsStringAsync().Result;
-			}
-		}
-
 		internal async Task SetResponseAsync(HttpResponseMessage responseMessage)
 		{
 			Status = responseMessage.StatusCode;
